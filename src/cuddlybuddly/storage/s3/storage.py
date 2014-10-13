@@ -49,7 +49,11 @@ class S3Storage(Storage):
         if not access_key and not secret_key:
             access_key, secret_key = self._get_access_keys()
 
+        server = getattr(settings, 'AWS_DEFAULT_SERVER',
+                                    's3-eu-west-1.amazonaws.com')
+
         self.connection = AWSAuthConnection(access_key, secret_key,
+                            server = server,
                             calling_format=calling_format)
 
         default_headers = getattr(settings, HEADERS, [])
