@@ -43,7 +43,7 @@ except ImportError:
 import xml.sax
 from django.utils.http import urlquote
 
-DEFAULT_HOST = 's3.amazonaws.com'
+DEFAULT_HOST = 's3-eu-west-1.amazonaws.com'
 PORTS_BY_SECURITY = { True: 443, False: 80 }
 METADATA_PREFIX = 'x-amz-meta-'
 AMAZON_HEADER_PREFIX = 'x-amz-'
@@ -289,7 +289,7 @@ class AWSAuthConnection:
 
 
         # build the path_argument string
-        # add the ? in all cases since 
+        # add the ? in all cases since
         # signature and credentials follow path args
         if len(query_args):
             path += "?" + query_args_hash_to_string(query_args)
